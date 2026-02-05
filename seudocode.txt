@@ -1,9 +1,18 @@
-1- Press the Start button.
+define varibales game.
 
-2- Several numbered blocks will appear for 3 seconds.
+create button to start
 
-3- Memorize their positions before they disappear.
+create divs for blocks in the games
 
-4- Tap the blocks in numerical order.
+create addEventListner to click
+the Start button.
 
-5- One wrong move costs a life. You have 3 lives total.
+crearte function like init()
+
+Several numbered blocks will appear for 3 seconds using css
+
+Memorize their positions before they disappear
+
+Tap the blocks in numerical order.
+
+One wrong move costs a life. You have 3 lives total.
