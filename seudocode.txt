@@ -1,18 +1,26 @@
-define varibales game.
+1-Create variables such as:level - lives - gameState
 
-create button to start
+2-Create div elements for the blocks.Give them a common class name
 
-create divs for blocks in the games
+3- Create a Start button and a Restart button.
+Give each button a unique id.
+Select (catch) them in JavaScript using queryselector
 
-create addEventListner to click
-the Start button.
 
-crearte function like init()
+4-Add an addEventListener to the Start and Restart buttons to begin the game.
 
-Several numbered blocks will appear for 3 seconds using css
+5- create functions like init() gameOver()
 
-Memorize their positions before they disappear
+Game Rules
 
-Tap the blocks in numerical order.
+-Several numbered blocks will appear on the screen for 3 seconds (using CSS).
 
-One wrong move costs a life. You have 3 lives total.
+-The player must memorize their positions before they disappear.
+
+-After they disappear, the player must tap the blocks in numerical order.
+
+-If the player makes one wrong move, they lose one life.
+
+-The player has 3 lives total.
+
+-When all lives are lost, the game ends and Restart button appear .

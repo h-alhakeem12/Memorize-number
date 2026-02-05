@@ -18,8 +18,6 @@
 
 ### ***Getting Started***
 
- [here](URL).
-##### The project was deployed and can be viewed [here](URL).
 ***
 
 ### ***Screenshots***
@@ -33,18 +31,11 @@
 
 ### ***Future Updates***
 
-- [ ] Future Update 1
-- [ ] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
+
 ***
 
 ### ***Credits***
 
-##### Funny Images: [DuckDuckGo Search](http://www.duckduckgo.com)
 
-##### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
-
-##### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 ***
 
