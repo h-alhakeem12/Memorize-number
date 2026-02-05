@@ -1,0 +1,9 @@
+1- Press the Start button.
+
+2- Several numbered blocks will appear for 3 seconds.
+
+3- Memorize their positions before they disappear.
+
+4- Tap the blocks in numerical order.
+
+5- One wrong move costs a life. You have 3 lives total.
