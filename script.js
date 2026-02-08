@@ -38,7 +38,7 @@ function init(){
     if(x < blocks){
 
       const randomX = Math.floor(Math.random() * 80)
-      const randomY = Math.floor(Math.random ()* 80)
+      const randomY = Math.floor(Math.random () * 80)
 
       item.style.top = randomX + '%'
       item.style.left = randomY + '%'
