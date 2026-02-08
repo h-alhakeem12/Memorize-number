@@ -32,7 +32,6 @@ levelText.textContent=`Level ${currentLevel}`
 function init(){
   expectedNumber = 1
   levelText.textContent =`Level ${currentLevel}`
-  levelText.style.fontFamily='cursive'
   const blocks = expectedNumber + 3
 
   items.forEach((item,x)=>{
@@ -74,7 +73,7 @@ function init(){
           else{
             restart(item)
 
-          
+
         }
 
 
