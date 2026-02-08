@@ -1,11 +1,10 @@
-1-Create variables such as:level - lives - gameState
+1-Create variables such as:level  - gameState
 
-2-Create div elements for the blocks.Give them a common class name
+2-Create div elements for the blocks .Give them a common class name
 
 3- Create a Start button and a Restart button.
 Give each button a unique id.
 Select (catch) them in JavaScript using queryselector
-
 
 4-Add an addEventListener to the Start and Restart buttons to begin the game.
 
