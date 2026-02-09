@@ -8,18 +8,27 @@ const container = document.querySelector(".flex-container")
 let currentLevel = 1
 let expectedNumber = 1
 
+let click = false
+
 startButton.addEventListener("click", () => {
   startButton.style.display = "none"
   levelText.style.display = "block"
   init()
 })
+restartButton.addEventListener("click", () => {
+  restartGame()
+})
 
 function init() {
   expectedNumber = 1
+  click = false
   levelText.textContent = `Level ${currentLevel}`
-  const blocks = expectedNumber + 3
+  const blocks = currentLevel + 3
 
   items.forEach((item, x) => {
+    item.style.backgroundColor = "rgb(32, 32, 148)"
+    item.style.display = "none"
+
     if (x < blocks) {
       const randomX = Math.floor(Math.random() * 80)
       const randomY = Math.floor(Math.random() * 80)
@@ -36,30 +45,38 @@ function init() {
       const myNum = x + 1
       item.textContent = myNum
 
+      item.onclick = null
       setTimeout(() => {
         item.textContent = ""
       }, 4000)
 
-      item.addEventListener("click", () => {
+      item.onclick = function () {
+        if (click) return
         if (myNum === expectedNumber) {
           item.textContent = myNum
-
           item.style.backgroundColor = "green"
           expectedNumber++
-        } else {
-          item.textContent = myNum
-          item.style.backgroundColor = "red"
-          levelText.textContent = "Game over"
 
+          if (expectedNumber > blocks) {
+            currentLevel++
+            setTimeout(init, 1000)
+          }
+        } else {
+          item.style.backgroundColor = "red"
+          levelText.textContent = "Game Over"
           restartButton.style.display = "block"
-          restartButton.addEventListener("click", () => {
-            item.style.backgroundColor = "rgb(32, 32, 148)"
-            restartButton.style.display = "none"
-            levelText.style.display = "block"
-            init()
-          })
         }
-      })
+      }
     }
   })
+}
+
+items.style.backgroundColor = "red"
+levelText.textContent = "Game Over"
+restartButton.style.display = "block"
+
+function restartGame() {
+  currentLevel = 1
+  restartButton.style.display = "none"
+  init()
 }
