@@ -13,17 +13,6 @@ startButton.addEventListener("click", () => {
   levelText.style.display = "block"
   init()
 })
-function restart(item) {
-  item.style.backgroundColor = "red"
-  levelText.textContent = "Game over"
-  restartButton.style.display = "block"
-  restartButton.addEventListener("click", () => {
-    restartButton.style.display = "none"
-    levelText.style.display = "block"
-    item.style.backgroundColor = "rgb(32, 32, 148)"
-    levelText.textContent = `Level ${currentLevel}`
-  })
-}
 
 function init() {
   expectedNumber = 1
@@ -43,7 +32,6 @@ function init() {
       item.style.justifyContent = "center"
 
       item.style.visibility = "visible"
-      item.style.fontSize = "20px"
 
       const myNum = x + 1
       item.textContent = myNum
@@ -51,19 +39,25 @@ function init() {
       setTimeout(() => {
         item.textContent = ""
       }, 4000)
+
       item.addEventListener("click", () => {
-        setTimeout((item.style.backgroundColor = "rgb(32, 32, 148)"), 4000)
         if (myNum === expectedNumber) {
           item.textContent = myNum
 
           item.style.backgroundColor = "green"
           expectedNumber++
-          if (expectedNumber > blocks) {
-            currentLevel++
-            setTimeout(init, 1000)
-          }
         } else {
-          restart(item)
+          item.textContent = myNum
+          item.style.backgroundColor = "red"
+          levelText.textContent = "Game over"
+
+          restartButton.style.display = "block"
+          restartButton.addEventListener("click", () => {
+            item.style.backgroundColor = "rgb(32, 32, 148)"
+            restartButton.style.display = "none"
+            levelText.style.display = "block"
+            init()
+          })
         }
       })
     }
