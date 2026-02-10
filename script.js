@@ -2,32 +2,47 @@ const startButton = document.querySelector("#start")
 const restartButton = document.querySelector("#restart")
 
 const levelText = document.querySelector("#level")
-const items = document.querySelectorAll(".flex-item")
+const flexBlock = document.querySelectorAll(".flex-block")
 const container = document.querySelector(".flex-container")
 
 const middle = document.querySelector(".middle")
 
-const firstLife = document.querySelector(".first")
-const secondLife = document.querySelector(".second")
-const thirdLife = document.querySelector(".third")
+const first = document.querySelector(".first")
+const second = document.querySelector(".second")
+const third = document.querySelector(".third")
 
+const score = document.querySelector(".score")
+
+let scoreCount = 0
+let lives = 3
 let currentLevel = 1
 let expectedNumber = 1
 
-let array = ["❤️", "❤️", "❤️"]
-firstLife.textContent = array[0]
-secondLife.textContent = array[1]
-thirdLife.textContent = array[2]
+function hearts() {
+  array = []
 
-firstLife.style.fontSize = "20px"
-secondLife.style.fontSize = "20px"
-thirdLife.style.fontSize = "20px"
+  for (let i = 0; i < lives; i++) {
+    array.push("❤️")
+  }
 
-console.log(firstLife)
+  first.textContent = array[0]
+  second.textContent = array[1]
+  third.textContent = array[2]
+  init()
+}
+
+console.log(first)
+
+first.style.fontSize = "30px"
+second.style.fontSize = "30px"
+third.style.fontSize = "30px"
 
 startButton.addEventListener("click", () => {
   startButton.style.display = "none"
   levelText.style.display = "block"
+  score.style.visibility = "visible"
+
+  hearts()
 
   init()
 })
@@ -38,45 +53,59 @@ restartButton.addEventListener("click", () => {
 function init() {
   expectedNumber = 1
   levelText.textContent = `Level ${currentLevel}`
+  score.textContent = `score:${scoreCount}`
+  score.style.fontSize = "30px"
 
-  const blocks = currentLevel + 3
+  const blocksCount = currentLevel + 3
 
-  items.forEach((item, x) => {
-    item.style.backgroundColor = "rgb(32, 32, 148)"
-    item.style.display = "none"
+  flexBlock.forEach((block, index) => {
+    block.style.backgroundColor = "rgb(32, 32, 148)"
+    block.style.display = "none"
 
-    if (x < blocks) {
+    if (index < blocksCount) {
       const randomX = Math.floor(Math.random() * 80)
       const randomY = Math.floor(Math.random() * 80)
 
-      item.style.top = randomX + "%"
-      item.style.left = randomY + "%"
+      block.style.top = randomX + "%"
+      block.style.left = randomY + "%"
 
-      item.style.display = "flex"
-      item.style.alignItems = "center"
-      item.style.justifyContent = "center"
+      block.style.display = "flex"
+      block.style.alignItems = "center"
+      block.style.justifyContent = "center"
 
-      item.style.visibility = "visible"
+      block.style.visibility = "visible"
 
-      const myNum = x + 1
-      item.textContent = myNum
+      const myNum = index + 1
+      block.textContent = myNum
 
-      item.onclick = null
+      block.onclick = null
       setTimeout(() => {
-        item.textContent = ""
+        block.textContent = ""
       }, 4000)
 
-      item.onclick = function () {
+      block.onclick = function () {
         if (myNum === expectedNumber) {
-          item.textContent = myNum
-          item.style.backgroundColor = "green"
+          block.textContent = myNum
+          block.style.backgroundColor = "green"
           expectedNumber++
 
-          if (expectedNumber > blocks) {
+          if (expectedNumber > blocksCount) {
+            scoreCount += 10
+
             currentLevel++
             setTimeout(init, 1000)
           }
         } else {
+          block.style.backgroundColor = "red"
+
+          lives--
+          hearts()
+          if (lives === 0) {
+            block.style.backgroundColor = "red"
+
+            levelText.textContent = "Game Over"
+            restartButton.style.display = "block"
+          }
         }
       }
     }
@@ -85,6 +114,8 @@ function init() {
 
 function restartGame() {
   currentLevel = 1
+  lives = 3
+  hearts()
   restartButton.style.display = "none"
   init()
 }

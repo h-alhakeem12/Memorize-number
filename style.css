@@ -16,21 +16,8 @@ body {
 .middle {
   display: flex;
 }
-
-.first-image {
-  width: 50px;
-  margin: 0 10px 0 10px;
-  visibility: hidden;
-}
-.second-image {
-  width: 50px;
-  margin: 0 10px 0 10px;
-  visibility: hidden;
-}
-.third-image {
-  width: 50px;
-  margin: 0 10px 0 10px;
-  visibility: hidden;
+.lives {
+  display: flex;
 }
 
 #start {
@@ -56,19 +43,23 @@ body {
 
 .flex-container {
   position: relative;
-  width: 600px;
-  height: 400px;
+  display: flex;
+
+  gap: 20px;
+
+  width: 900px;
+  height: 500px;
   margin: 10px;
   padding: 200px;
   background-color: #ea6767;
   border-radius: 10px;
 }
 
-.flex-item {
+.flex-block {
   position: absolute;
   display: none;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   border-radius: 10px;
   background-color: rgb(32, 32, 148);
   color: white;
@@ -80,4 +71,11 @@ body {
   font-family: cursive;
   align-self: center;
   margin: 10px 0 10px 0;
+}
+.score {
+  visibility: hidden;
+}
+.best-score {
+  font-size: 30px;
+  display: flex;
 }
