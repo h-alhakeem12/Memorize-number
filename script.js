@@ -5,14 +5,30 @@ const levelText = document.querySelector("#level")
 const items = document.querySelectorAll(".flex-item")
 const container = document.querySelector(".flex-container")
 
+const middle = document.querySelector(".middle")
+
+const firstLife = document.querySelector(".first")
+const secondLife = document.querySelector(".second")
+const thirdLife = document.querySelector(".third")
+
 let currentLevel = 1
 let expectedNumber = 1
 
-let click = false
+let array = ["❤️", "❤️", "❤️"]
+firstLife.textContent = array[0]
+secondLife.textContent = array[1]
+thirdLife.textContent = array[2]
+
+firstLife.style.fontSize = "20px"
+secondLife.style.fontSize = "20px"
+thirdLife.style.fontSize = "20px"
+
+console.log(firstLife)
 
 startButton.addEventListener("click", () => {
   startButton.style.display = "none"
   levelText.style.display = "block"
+
   init()
 })
 restartButton.addEventListener("click", () => {
@@ -21,8 +37,8 @@ restartButton.addEventListener("click", () => {
 
 function init() {
   expectedNumber = 1
-  click = false
   levelText.textContent = `Level ${currentLevel}`
+
   const blocks = currentLevel + 3
 
   items.forEach((item, x) => {
@@ -51,7 +67,6 @@ function init() {
       }, 4000)
 
       item.onclick = function () {
-        if (click) return
         if (myNum === expectedNumber) {
           item.textContent = myNum
           item.style.backgroundColor = "green"
@@ -62,18 +77,11 @@ function init() {
             setTimeout(init, 1000)
           }
         } else {
-          item.style.backgroundColor = "red"
-          levelText.textContent = "Game Over"
-          restartButton.style.display = "block"
         }
       }
     }
   })
 }
-
-items.style.backgroundColor = "red"
-levelText.textContent = "Game Over"
-restartButton.style.display = "block"
 
 function restartGame() {
   currentLevel = 1
