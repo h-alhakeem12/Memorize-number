@@ -98,9 +98,7 @@ function init() {
       setTimeout(() => {
         block.textContent = ""
 
-        if (index === blocksCount - 1) {
-          canClick = true
-        }
+        canClick = true
       }, 4000)
 
       block.onclick = function () {
