@@ -12,12 +12,13 @@ const second = document.querySelector(".second")
 const third = document.querySelector(".third")
 
 const score = document.querySelector(".score")
+const bestScore = document.querySelector(".best-score")
 
 let scoreCount = 0
 let lives = 3
 let currentLevel = 1
 let expectedNumber = 1
-
+let bestScoreCount = 0
 function hearts() {
   array = []
 
@@ -28,7 +29,6 @@ function hearts() {
   first.textContent = array[0]
   second.textContent = array[1]
   third.textContent = array[2]
-  init()
 }
 
 console.log(first)
@@ -55,6 +55,7 @@ function init() {
   levelText.textContent = `Level ${currentLevel}`
   score.textContent = `score:${scoreCount}`
   score.style.fontSize = "30px"
+  bestScore.textContent = `best score:${bestScoreCount}`
 
   const blocksCount = currentLevel + 3
 
@@ -63,11 +64,13 @@ function init() {
     block.style.display = "none"
 
     if (index < blocksCount) {
-      const randomX = Math.floor(Math.random() * 80)
-      const randomY = Math.floor(Math.random() * 80)
+      const randomX = Math.floor(Math.random() * 90)
+      const randomY = Math.floor(Math.random() * 90)
 
       block.style.top = randomX + "%"
       block.style.left = randomY + "%"
+      block.style.right = randomX + "px"
+      block.style.bottom = randomY + "px"
 
       block.style.display = "flex"
       block.style.alignItems = "center"
@@ -78,7 +81,6 @@ function init() {
       const myNum = index + 1
       block.textContent = myNum
 
-      block.onclick = null
       setTimeout(() => {
         block.textContent = ""
       }, 4000)
@@ -91,18 +93,23 @@ function init() {
 
           if (expectedNumber > blocksCount) {
             scoreCount += 10
-
             currentLevel++
             setTimeout(init, 1000)
+            if (scoreCount > bestScoreCount) {
+              bestScoreCount = scoreCount
+            }
           }
         } else {
           block.style.backgroundColor = "red"
-
           lives--
           hearts()
-          if (lives === 0) {
-            block.style.backgroundColor = "red"
 
+          setTimeout(() => {
+            block.style.backgroundColor = "rgb(32, 32, 148)"
+          }, 1000)
+
+          if (lives === 0) {
+            score.style.visibility = "hidden"
             levelText.textContent = "Game Over"
             restartButton.style.display = "block"
           }
@@ -115,6 +122,7 @@ function init() {
 function restartGame() {
   currentLevel = 1
   lives = 3
+  scoreCount = 0
   hearts()
   restartButton.style.display = "none"
   init()
