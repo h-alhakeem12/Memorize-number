@@ -5,8 +5,6 @@ const levelText = document.querySelector("#level")
 const flexBlock = document.querySelectorAll(".flex-block")
 const container = document.querySelector(".flex-container")
 
-const middle = document.querySelector(".middle")
-
 const first = document.querySelector(".first")
 const second = document.querySelector(".second")
 const third = document.querySelector(".third")
@@ -33,9 +31,9 @@ function hearts() {
   third.textContent = array[2]
 }
 
-first.style.fontSize = "30px"
-second.style.fontSize = "30px"
-third.style.fontSize = "30px"
+first.style.fontSize = "20px"
+second.style.fontSize = "20px"
+third.style.fontSize = "20px"
 
 startButton.addEventListener("click", () => {
   startButton.style.display = "none"
@@ -57,7 +55,7 @@ function init() {
   canClick = false
   levelText.textContent = `Level ${currentLevel}`
   score.textContent = `score:${scoreCount}`
-  score.style.fontSize = "30px"
+  score.style.fontSize = "15px"
   bestScore.textContent = `best score:${bestScoreCount}`
 
   const blocksCount = currentLevel + 3
@@ -80,7 +78,7 @@ function init() {
           randomX = Math.floor(Math.random() * 85)
           randomY = Math.floor(Math.random() * 85)
 
-          i = -1 // restart checking
+          i = -1
         }
       }
       usedPositions.push({ x: randomX, y: randomY })

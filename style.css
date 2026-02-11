@@ -3,7 +3,7 @@
 body {
   font-family: "Press Start 2P", system-ui;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   background-color: antiquewhite;
   display: flex;
@@ -57,8 +57,8 @@ body {
   position: relative;
   display: flex;
   gap: 20px;
-  width: 900px;
-  height: 400px;
+  width: 600px;
+  height: 300px;
   margin: 10px;
   padding: 200px;
   background-color: #ea6767;
@@ -73,11 +73,11 @@ body {
   border-radius: 10px;
   background-color: rgb(32, 32, 148);
   color: white;
-  font-size: 20px;
+  font-size: 15px;
 }
 #level {
   display: none;
-  font-size: 22px;
+  font-size: 15px;
   font-family: "Press Start 2P", system-ui;
   font-weight: 300;
   font-style: normal;
@@ -88,7 +88,7 @@ body {
   visibility: hidden;
 }
 .best-score {
-  font-size: 30px;
+  font-size: 15px;
   display: flex;
 }
 h1 {
