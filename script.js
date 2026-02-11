@@ -19,6 +19,8 @@ let lives = 3
 let currentLevel = 1
 let expectedNumber = 1
 let bestScoreCount = 0
+let gameOver = false
+let canClick = false
 function hearts() {
   array = []
 
@@ -31,8 +33,6 @@ function hearts() {
   third.textContent = array[2]
 }
 
-console.log(first)
-
 first.style.fontSize = "30px"
 second.style.fontSize = "30px"
 third.style.fontSize = "30px"
@@ -41,6 +41,7 @@ startButton.addEventListener("click", () => {
   startButton.style.display = "none"
   levelText.style.display = "block"
   score.style.visibility = "visible"
+  gameOver = false
 
   hearts()
 
@@ -51,7 +52,9 @@ restartButton.addEventListener("click", () => {
 })
 
 function init() {
+  if (gameOver) return
   expectedNumber = 1
+  canClick = false
   levelText.textContent = `Level ${currentLevel}`
   score.textContent = `score:${scoreCount}`
   score.style.fontSize = "30px"
@@ -59,18 +62,32 @@ function init() {
 
   const blocksCount = currentLevel + 3
 
+  let usedPositions = []
+
   flexBlock.forEach((block, index) => {
     block.style.backgroundColor = "rgb(32, 32, 148)"
     block.style.display = "none"
 
     if (index < blocksCount) {
-      const randomX = Math.floor(Math.random() * 90)
-      const randomY = Math.floor(Math.random() * 90)
+      let randomX = Math.floor(Math.random() * 85)
+      let randomY = Math.floor(Math.random() * 85)
 
+      for (let i = 0; i < usedPositions.length; i++) {
+        if (
+          Math.abs(usedPositions[i].x - randomX) < 10 &&
+          Math.abs(usedPositions[i].y - randomY) < 10
+        ) {
+          randomX = Math.floor(Math.random() * 85)
+          randomY = Math.floor(Math.random() * 85)
+
+          i = -1 // restart checking
+        }
+      }
+      usedPositions.push({ x: randomX, y: randomY })
+
+      block.style.position = "absolute"
       block.style.top = randomX + "%"
       block.style.left = randomY + "%"
-      block.style.right = randomX + "px"
-      block.style.bottom = randomY + "px"
 
       block.style.display = "flex"
       block.style.alignItems = "center"
@@ -83,9 +100,15 @@ function init() {
 
       setTimeout(() => {
         block.textContent = ""
+
+        if (index === blocksCount - 1) {
+          canClick = true
+        }
       }, 4000)
 
       block.onclick = function () {
+        if (gameOver || !canClick) return
+
         if (myNum === expectedNumber) {
           block.textContent = myNum
           block.style.backgroundColor = "green"
@@ -109,6 +132,8 @@ function init() {
           }, 1000)
 
           if (lives === 0) {
+            gameOver = true
+            canClick = false
             score.style.visibility = "hidden"
             levelText.textContent = "Game Over"
             restartButton.style.display = "block"
@@ -123,6 +148,9 @@ function restartGame() {
   currentLevel = 1
   lives = 3
   scoreCount = 0
+  expectedNumber = 1
+  gameOver = false
+  canClick = false
   hearts()
   restartButton.style.display = "none"
   init()
