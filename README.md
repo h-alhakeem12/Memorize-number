@@ -17,25 +17,23 @@
 ***
 
 ### ***Getting Started***
-
+#### Deployed game [here](https://memorize-number.surge.sh/)
 ***
+
+
 
 ### ***Screenshots***
 
-##### image header 1
-![first]()
+##### Welcome page
+![first](./images/Screenshot%202026-02-11%20141011.png)
 
-##### image header 2
-![Second]
+##### start game page
+![Second](./images/Screenshot%202026-02-11%20141154.png)
 ***
 
 ### ***Future Updates***
-
-
+- [x] Improve design
 ***
 
-### ***Credits***
 
-
-***
 

@@ -77,11 +77,10 @@ function init() {
         ) {
           randomX = Math.floor(Math.random() * 85)
           randomY = Math.floor(Math.random() * 85)
-
-          i = -1
         }
       }
       usedPositions.push({ x: randomX, y: randomY })
+      console.log(usedPositions)
 
       block.style.position = "absolute"
       block.style.top = randomX + "%"
