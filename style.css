@@ -5,17 +5,19 @@ body {
   font-weight: 200;
   font-size: 15px;
   font-style: normal;
-  background-color: antiquewhite;
+  background-color: #262626;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: aliceblue;
 }
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 35px;
 }
 .buttons {
   padding: 10px 100px 10px 100px;
@@ -25,6 +27,9 @@ body {
 }
 .middle {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 10px 0;
 }
 .lives {
   display: flex;
@@ -39,6 +44,10 @@ body {
   font-size: 30px;
   color: white;
   font-family: cursive;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-size: 20px bold;
+  font-style: normal;
 }
 #restart {
   display: none;
@@ -51,6 +60,10 @@ body {
 
   color: white;
   font-family: cursive;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-size: 20px bold;
+  font-style: normal;
 }
 
 .flex-container {
@@ -61,34 +74,36 @@ body {
   height: 300px;
   margin: 10px;
   padding: 200px;
-  background-color: #ea6767;
-  border-radius: 10px;
+  background-color: rgb(225, 221, 221);
+  border-radius: 30px;
 }
 
 .flex-block {
-  position: absolute;
   display: none;
   height: 80px;
   width: 80px;
   border-radius: 10px;
-  background-color: rgb(32, 32, 148);
+  background-color: #262626;
   color: white;
   font-size: 15px;
 }
 #level {
   display: none;
-  font-size: 15px;
+  font-size: 50px;
   font-family: "Press Start 2P", system-ui;
   font-weight: 300;
   font-style: normal;
   align-self: center;
   margin: 10px 0 10px 0;
+  color: aliceblue;
 }
 .score {
   visibility: hidden;
+  font-size: 20px;
+  padding: 0 0 10px 0;
 }
 .best-score {
-  font-size: 15px;
+  font-size: 25px;
   display: flex;
 }
 h1 {
@@ -111,7 +126,14 @@ h1 {
   background-color: rgb(75, 57, 156);
   border: solid black 2px;
   font-size: 30px;
-
   color: white;
   font-family: cursive;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-size: 20px bold;
+  font-style: normal;
+}
+.mm {
+  display: flex;
+  flex-direction: row;
 }

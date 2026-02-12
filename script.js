@@ -31,9 +31,9 @@ function hearts() {
   third.textContent = array[2]
 }
 
-first.style.fontSize = "20px"
-second.style.fontSize = "20px"
-third.style.fontSize = "20px"
+first.style.fontSize = "50px"
+second.style.fontSize = "50px"
+third.style.fontSize = "50px"
 
 startButton.addEventListener("click", () => {
   startButton.style.display = "none"
@@ -55,7 +55,7 @@ function init() {
   canClick = false
   levelText.textContent = `Level ${currentLevel}`
   score.textContent = `score:${scoreCount}`
-  score.style.fontSize = "15px"
+  score.style.fontSize = "30px"
   bestScore.textContent = `best score:${bestScoreCount}`
 
   const blocksCount = currentLevel + 3
@@ -63,7 +63,7 @@ function init() {
   let usedPositions = []
 
   flexBlock.forEach((block, index) => {
-    block.style.backgroundColor = "rgb(32, 32, 148)"
+    block.style.backgroundColor = " #262626"
     block.style.display = "none"
 
     if (index < blocksCount) {
@@ -80,7 +80,6 @@ function init() {
         }
       }
       usedPositions.push({ x: randomX, y: randomY })
-      console.log(usedPositions)
 
       block.style.position = "absolute"
       block.style.top = randomX + "%"
@@ -97,7 +96,6 @@ function init() {
 
       setTimeout(() => {
         block.textContent = ""
-
         canClick = true
       }, 4000)
 
@@ -123,7 +121,7 @@ function init() {
           hearts()
 
           setTimeout(() => {
-            block.style.backgroundColor = "rgb(32, 32, 148)"
+            block.style.backgroundColor = " #262626"
           }, 1000)
 
           if (lives === 0) {
